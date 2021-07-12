@@ -48,7 +48,7 @@ function handler(request, response) {
     var knownHosts = [
         'localhost:5000',
         'localhost',
-        'openmedia.herokuapp.com'
+        'fafit-web.herokuapp.com'
     ];
 
     if (!_.includes(knownHosts, request.headers.host)) {
