@@ -22,42 +22,43 @@ class TodosStore extends StoreBase {
             _searchTerms: "Home",
 
         }, {
+            id: "Learn",
+            creationTime: 0,
+            text: "Learn Optics",
+            _searchTerms: "Learn Optics",
+
+        }, {
+            id: "Documentation",
+            creationTime: 0,
+            text: "KK Variational Analysis",
+            _searchTerms: "Learn Optics",
+
+        }, {
+            id: "KK Variational Analysis",
+            creationTime: 0,
+            text: "KK Variational Analysis",
+            _searchTerms: "KK Variational Analysis",
+
+        }, {
             id: "ICO",
             creationTime: 0,
             text: "Initial Coin Offering",
-            _searchTerms: "ICO",
+            _searchTerms: "Initial Coin Offering",
+
+        }, {
+            id: "FAQ",
+            creationTime: 0,
+            text: "Audio NFT",
+            _searchTerms: "FAQ",
 
         }, {
             id: "swap",
             creationTime: 0,
-            text: "Swap Token",
+            text: "Swap FA Token",
             _searchTerms: "Swap Token",
 
-        }, {
-            id: "videoNFT",
-            creationTime: 0,
-            text: "Video NFT",
-            _searchTerms: "Video NFT",
-
-        }, {
-            id: "audioNFT",
-            creationTime: 0,
-            text: "Audio NFT",
-            _searchTerms: "Audio NFT",
-
-        }, {
-            id: "imageNFT",
-            creationTime: 0,
-            text: "Image NFT",
-            _searchTerms: "Image NFT",
-
-        }, {
-            id: "objectNFT",
-            creationTime: 0,
-            text: "3D Object NFT",
-            _searchTerms: "Object NFT",
-
-        }];
+        }
+    ];
 
     private _extension: string = ''
     @autoSubscribe
@@ -70,6 +71,7 @@ class TodosStore extends StoreBase {
         this._extension = password
         this.trigger()
     }
+
     startup() {
         return LocalDb.getAllTodos().then(todos => {
             this._todos = todos;

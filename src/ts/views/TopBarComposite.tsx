@@ -40,7 +40,7 @@ const _styles = {
         width: 26,
     }),
     logoText: RX.Styles.createTextStyle({
-        font: Fonts.displaySemibold,
+        font: Fonts.displayBold,
         fontSize: FontSizes.size20,
         marginLeft: 30,
         marginHorizontal: 4,
@@ -136,7 +136,7 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
                     </RX.Button>
                         <RX.Text style={_styles.logoText}>
 
-                            {'CulturalSpacesBooking'}
+                            {'Fafit'}
                         </RX.Text>
                     </RX.View>
                 </RX.View>
@@ -150,7 +150,17 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
                         <UI.Button onPress={this._onPressModal} iconSlot={iconStyle => (
                             <FaWallet color={'black'} style={{ marginTop: 0, marginRight: 5, width: 16, height: 16 }} />
                         )} style={{ content: [{ width: 160, borderRadius: 11, }], label: { color: 'black', font: Fonts.displayBold } }
-                        } elevation={4} variant={"outlined"} label="Connect" />
+                        } elevation={4} variant={"outlined"} label="New Analisys" />
+                        :
+                        <RX.View> <VerticalSeparator />
+                            <HoverButton onPress={this._onPressHelp} onRenderChild={this._onRenderHelpButton} />
+                            <VerticalSeparator />
+                        </RX.View>}
+                    {true ?
+                        <UI.Button onPress={this._onPressModal} iconSlot={iconStyle => (
+                            <FaWallet color={'black'} style={{ marginTop: 0, marginRight: 5, width: 16, height: 16 }} />
+                        )} style={{ content: [{ width: 160, borderRadius: 11, }], label: { color: 'black', font: Fonts.displayBold } }
+                        } elevation={4} variant={"outlined"} label="Access" />
                         :
                         <RX.View> <VerticalSeparator />
                             <HoverButton onPress={this._onPressHelp} onRenderChild={this._onRenderHelpButton} />

@@ -14,7 +14,7 @@ var finalhandler = require('finalhandler');
 
 // Find our static content in the web dir.
 var serve = serveStatic('./web');
-var port = 8080;
+var port = 5000;
 
 var config = {
     version: '0.0.1.0'
@@ -32,11 +32,13 @@ function replaceVariables(html, replacements) {
 
 // Serve up the requested page.
 function serveHtmlPage(response, file) {
+    console.log("file "+file);
     response.writeHead(200, { 'Content-Type': 'text/html' });
     var html = fs.readFileSync(file, { encoding: 'utf8' });
     html = replaceVariables(html, {
         version: config.version
     });
+    
     response.end(html);
 }
 
@@ -44,8 +46,9 @@ function handler(request, response) {
     // Require that we're serving files from the proper domain. This is
     // necessary for OAuth flow and the cert.
     var knownHosts = [
-        'localhost:8080',
-        'localhost'
+        'localhost:5000',
+        'localhost',
+        'openmedia.herokuapp.com'
     ];
 
     if (!_.includes(knownHosts, request.headers.host)) {
@@ -92,11 +95,11 @@ function handler(request, response) {
         request.on('end', function () {
             var decodedBody = querystring.parse(body);
             console.log(decodedBody);
-
-            serveHtmlPage(response, 'web/index.html');
+            console.log("url1 "+process.cwd());
+            serveHtmlPage(response,"web/index.html");
         });
     } else {
-        serveHtmlPage(response, 'web/index.html');
+        serveHtmlPage(response,"web/index.html");
     }
 }
 
@@ -107,9 +110,9 @@ console.log(
     ' Keep this server running while developing and refresh your browser for\n' +
     ' fresh assets.\n\n' +
     ' Assuming your hosts and certs have been configured properly, visit\n' +
-    ' http://localhost:8080\n' +
+    ' http://localhost:5000\n' +
     '───────────────────────────────────────────────────────────────────────────\n'
 );
 
-http.createServer(handler).listen(port);
+http.createServer(handler).listen(process.env.PORT || 5000);
 
